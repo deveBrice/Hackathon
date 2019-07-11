@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from '../register/register.component';
+import { AdminComponent } from '../admin/admin.component';
+import { BrowserComponent } from '../shares/browser/browser.component';
 import { AuthService } from '../service/authService';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminComponent,
+    BrowserComponent
   ],
   imports: [
     BrowserModule,
