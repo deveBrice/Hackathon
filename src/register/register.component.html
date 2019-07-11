@@ -1,4 +1,4 @@
-<form (submit)="registerUser($event)">
+<!--<form (submit)="registerUser($event)">
     <div class="container">
       <h2>Register Here</h2>
     <div>
@@ -17,4 +17,13 @@
       <button type="submit" id="submit">Submit</button>
     </div>
   </div>
+  </form>-->
+
+  <form [formGroup]="registerUser" (ngSubmit)="onSubmit()">
+      <input type="text" formControlName="firstName" placeholder="firstname"  id="firstname" maxlength="{{maxLength}}">
+      <input type="text" formControlName="lastName" placeholder="lastname" id="lastname" maxlength="{{maxLength}}">
+      <input type="text" formControlName="email" placeholder="email" id="email">
+      <input type="text" formControlName="nameProject" placeholder="name project" id="name_project">
+      <textarea  formControlName="description" maxlength="{{maxLengthDescription}"></textarea>
+      <button type="submit" [disabled]="!registerUser.valid">Submit</button>
   </form>
