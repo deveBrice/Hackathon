@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../service/authService';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
 })
 
 export class RegisterComponent implements OnInit {
-  
+
   registerUser: FormGroup;
   submitted = false;
   maxLength: number = 32;
@@ -22,8 +21,9 @@ export class RegisterComponent implements OnInit {
   rowsTextarea: number = 5;
   tabParticipant = [];
 
-  constructor(private auth: AuthService, private router: Router) { }
-
+  constructor(private router: Router) { }
+  
+  //Initialisation of form
   ngOnInit() {
     this.getRegisterUser();
   }
@@ -40,13 +40,6 @@ export class RegisterComponent implements OnInit {
       participant: new FormArray([])
     })
   }
-
-  /*getSetValue(){
-    this.registerUser.setValue({
-      participant: []
-    })
-  }*/
-
 
   //count who add four participant max
   onAddParticipant(){
@@ -76,27 +69,4 @@ export class RegisterComponent implements OnInit {
 
 
 }
-
- 
- /* registerUser(event) {
-    event.preventDefault()
-    const errors = []
-    const target = event.target
-    const firstname = target.querySelector('#firstname').value
-    const lastname = target.querySelector('#lastname').value
-    const email = target.querySelector('#email').value
-    const text = target.querySelector('#text').value
-
-
-    if(errors.length === 0) {
-        this.auth.registerUser(firstname, lastname, email, text).subscribe(data => {
-          console.log(data)
-          if(data.success) {
-            console.log("bravo")
-          }
-        })
-      }
-
-  }*/
-
 }

@@ -7,7 +7,6 @@ import { RegisterComponent } from '../register/register.component';
 import { AdminComponent } from '../admin/admin.component';
 import { BrowserComponent } from '../shares/browser/browser.component';
 import { ParticipantComponent } from '../participant/participant.component';
-import { AuthService } from '../service/authService';
 import { ParticipantService } from '../service/participantService';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,7 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, ParticipantService],
+  providers: [ParticipantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -52,11 +52,11 @@
                   
                   <input type="button" (click)="onDeleteParticipant(registerUser.get('participant').controls, i)" value="delete" class="btn btn-danger">
                   <input type="text" class="form-control" 
-                  [formControlName]="participant-i[firstName]" placeholder="firstname">
+                  [formControlName]="i" placeholder="firstname">
                   <input type="text" class="form-control participant" 
-                  [formControlName]="participant-i[lastName]" placeholder="lastName">
+                  [formControlName]="i" placeholder="lastName">
                   <input type="text" class="form-control participant" 
-                  [formControlName]="participant-i[email]" placeholder="email">
+                  [formControlName]="i" placeholder="email">
                 </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+//creat a model for the participant 
 export class Participant {
     id: number;
     first_name: string;
