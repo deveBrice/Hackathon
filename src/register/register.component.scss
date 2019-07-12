@@ -1,26 +1,12 @@
-form {
+.jumbotron {
     display: flex;
-    position: absolute;
     width: 100%;
     height: 100%;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-    padding: 20px;
-    background: #eee;
-    border-radius: 20px;
-}
 
 input#firstname, input#lastname, input#email, input#name_project {
-    outline: 0;
-    font-size: 20px;
     padding: 5px 10px;
     margin: 5px;
     min-width: 300px;
@@ -32,4 +18,9 @@ button#submit {
     border-radius: 10px;
     font-size: 20px;
     cursor: pointer;
+}
+
+.participant {
+    margin-top: 10px;
+    min-width: 300px; 
 }
