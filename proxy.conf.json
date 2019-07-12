@@ -1,0 +1,8 @@
+{
+    "proxies": [
+        {
+            "path": "/api",
+            "proxyUrl": "http://localhost:3600/participants"
+        }
+    ]
+}
