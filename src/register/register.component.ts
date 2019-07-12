@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/authService';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,27 +8,69 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
+
 export class RegisterComponent implements OnInit {
   registerUser: FormGroup;
-
+  submitted = false;
   maxLength: number = 32;
   maxLengthDescription: number = 200;
+  maxLengthNameProject: number = 32;
+  countParticipant: number = 0;
+  maxParticipant: number = 4;
+  colsTextarea: number = 38;
+  rowsTextarea: number = 5;
+  tabParticipant = [];
+
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.getRegisterUser();
-  
   }
 
   getRegisterUser(){
     this.registerUser = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.maxLength(this.maxLength)]),
       lastName: new FormControl('', [Validators.required, Validators.maxLength(this.maxLength)]),
-      email: new FormControl('', Validators.required),
-      nameProject: new FormControl('', Validators.required),
-      description : new FormControl('', [Validators.maxLength(this.maxLengthDescription)]) 
+      email: new FormControl('', [Validators.required, Validators.email]),
+      nameProject: new FormControl('', [Validators.required, Validators.maxLength(this.maxLengthNameProject)]),
+      description: new FormControl('', [Validators.maxLength(this.maxLengthDescription)]), 
+      participant: new FormArray([])
     })
   }
+
+  /*getSetValue(){
+    this.registerUser.setValue({
+      participant: []
+    })
+  }*/
+
+  onAddParticipant(){
+    if(this.countParticipant < this.maxParticipant){
+      this.countParticipant++;
+      const control=new FormControl(null,Validators.required);
+      (<FormArray>this.registerUser.get('participant')).push(control);
+    }
+  }
+
+  onDeleteParticipant(tabParticipant: [], index: number ){
+   
+    tabParticipant.splice(index, 1);
+    this.countParticipant--;
+  }
+
+  get f() { return this.registerUser.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.registerUser.invalid) {
+        return;
+    }
+
+
+}
+
  
  /* registerUser(event) {
     event.preventDefault()
