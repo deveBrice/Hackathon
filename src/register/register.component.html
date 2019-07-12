@@ -25,35 +25,22 @@
             <div class="form-group">
                 <label>First Name</label>
                 <input type="text" formControlName="firstName" class="form-control" id="firstname" maxlength="{{maxLength}}" />
-                <div *ngIf="registerUser.get('firstName').touched" class="invalid-feedback">
-                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
-                </div>
             </div>
             <div class="form-group">
                 <label>Last Name</label>
                 <input type="text" formControlName="lastName" class="form-control" id="lastname" maxlength="{{maxLength}}" />
-                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-                </div>
             </div>
             <div class="form-group">
                 <label>Email</label>
                 <input type="text" formControlName="email" class="form-control" id="email"/>
-                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                    <div *ngIf="f.email.errors.required">Email is required</div>
-                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                </div>
             </div>
             <div class="form-group">
                 <label>Name Project</label>
                 <input type="text" formControlName="nameProject" class="form-control" id="name_project" maxlength="{{maxLengthNameProject}}"/>
-                <div *ngIf="submitted && f.nameProject.errors" class="invalid-feedback">
-                    <div *ngIf="f.nameProject.errors.required">Name Project is required</div>
-                </div>
             </div>
             <div class="form-group">
               <label for="description">Description</label>
-                <textarea formControlName="description" class="form-control" maxlength="{{maxLengthDescription}" id="description" cols="{{colsTextarea}}" rows="{{rowsTextarea}}" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"></textarea>
+                <textarea formControlName="description" class="form-control" maxlength="{{maxLengthDescription}" id="description" cols="{{colsTextarea}}" rows="{{rowsTextarea}}"></textarea>
             </div>
             <div formArrayName="participant">
                 <button *ngIf="countParticipant < 4" class="btn btn-default" 
@@ -62,13 +49,14 @@
             <div class="form-group" 
                 *ngFor="let part of registerUser.get('participant').controls; let i=index">
                 <div class="participant" id="participant-{{i}}">
+                  
                   <input type="button" (click)="onDeleteParticipant(registerUser.get('participant').controls, i)" value="delete" class="btn btn-danger">
+                  <input type="text" class="form-control" 
+                  [formControlName]="participant-i[firstName]" placeholder="firstname">
                   <input type="text" class="form-control participant" 
-                  [formControlName]="i" placeholder="firstname">
+                  [formControlName]="participant-i[lastName]" placeholder="lastName">
                   <input type="text" class="form-control participant" 
-                  [formControlName]="i" placeholder="lastName">
-                  <input type="text" class="form-control participant" 
-                  [formControlName]="i" placeholder="email">
+                  [formControlName]="participant-i[email]" placeholder="email">
                 </div>
             </div>
           </div>

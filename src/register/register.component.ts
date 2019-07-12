@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 
 export class RegisterComponent implements OnInit {
+  
   registerUser: FormGroup;
   submitted = false;
   maxLength: number = 32;
@@ -27,6 +28,8 @@ export class RegisterComponent implements OnInit {
     this.getRegisterUser();
   }
 
+
+  //create of form
   getRegisterUser(){
     this.registerUser = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.maxLength(this.maxLength)]),
@@ -44,6 +47,8 @@ export class RegisterComponent implements OnInit {
     })
   }*/
 
+
+  //count who add four participant max
   onAddParticipant(){
     if(this.countParticipant < this.maxParticipant){
       this.countParticipant++;
@@ -51,14 +56,15 @@ export class RegisterComponent implements OnInit {
       (<FormArray>this.registerUser.get('participant')).push(control);
     }
   }
-
+ 
+  //delete a participant
   onDeleteParticipant(tabParticipant: [], index: number ){
    
     tabParticipant.splice(index, 1);
     this.countParticipant--;
   }
 
-  get f() { return this.registerUser.controls; }
+
 
   onSubmit() {
     this.submitted = true;
